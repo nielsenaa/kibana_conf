@@ -2,9 +2,9 @@
 
 Say you have 3 ES defined as below and you want to monitor each of them with metricbeat, and visualize the data through Kibana : 
 
-aaaaa-elasticsearch.services.clever-cloud.com
-bbbbb-elasticsearch.services.clever-cloud.com
-ccccc-elasticsearch.services.clever-cloud.com
+- aaaaa-elasticsearch.services.clever-cloud.com
+- bbbbb-elasticsearch.services.clever-cloud.com
+- ccccc-elasticsearch.services.clever-cloud.com
 
 First, create a simple bash file with the content below and name it something relevant like "kibana_custom_conf" and host it somewhere publicly accessible (we strongly recommend Cellar.)
 
