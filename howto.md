@@ -69,7 +69,7 @@ Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the config
 curl https://path_to_your_custom_config_file/kibana_custom_conf | sh
 ```
 
-Once done, start your kibana app. For the purpose of this how-to, we will consider its domain is : 
+Once done, start your kibana app. For the purpose of this how-to, let's say its domain is : 
 
 sink_node-elasticsearch.services.clever-cloud.com
 
