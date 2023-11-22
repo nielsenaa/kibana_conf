@@ -11,6 +11,8 @@ cd metricbeat
 vim metricbeat.yml
 ```
 
+Update metricbeat.yml with the following content :
+
 ```bash
 setup.kibana:
 
@@ -33,6 +35,8 @@ output.elasticsearch:
 cd module.d
 vim elasticsearch.yml
 ```
+
+Update elasticsearch.yml with the following content :
 
 ```bash
   hosts: ["bzzl7d0tnzvdntx0opfz-elasticsearch.services.clever-cloud.com:8080"]
