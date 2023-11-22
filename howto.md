@@ -63,15 +63,20 @@ mkdir -p data
 
 Now create a new Kibana app on a new ES addon. This will be the ES and Kibana that will collect all data coming from metricbeat, and will also be the access point and interface where you will be able to do all your monitoring and enjoy all your data discovery, transformation etc...
 
-Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the configuration of your Kibana app to and start it up:
+Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the configuration of your Kibana app :
 
 ```bash
 curl https://path_to_your_custom_config_file/kibana_custom_conf | sh
 ```
 
-Now that your Kibana is up and running, log into it and go create a new user, and add the following roles to it. (list minimal required roles)
+Once done, start your kibana app. For the purpose of this how-to, we will consider its domain is : 
 
-Now ssh into each of the ES nodes you want metricbeat running to collect and push its data to your newly created and dedicated Kibana, and do the following:
+sink_node-elasticsearch.services.clever-cloud.com
+
+
+Now that your Kibana is up and running, log into-it and go create a new user, call it something like "kibana_custom_user", give it a strong password, and add the following roles to it. (list minimal required roles)
+
+Now ssh into EACH of the ES nodes you want metricbeat running to collect and push its data to your newly created and dedicated Kibana, and do the following:
 
 ```bash
 
@@ -88,18 +93,18 @@ Update metricbeat.yml with the following content :
 ```bash
 setup.kibana:
 
-  host: "https://kibana-bo33yt4r5zq0j7va5gpr-elasticsearch.services.clever-cloud.com:443"
-  username: "kibana_custom_user"
-  password: "kibana_custom_password"
+  host: "https://kibana-sink_node-elasticsearch.services.clever-cloud.com:443"
+  username: "kibana_custom_username"
+  password: "kibana_custom_username_password"
   ...
   ...
   ...
 output.elasticsearch:
-  hosts: ["bo33yt4r5zq0j7va5gpr-elasticsearch.services.clever-cloud.com:443"]
+  hosts: ["sink_node-elasticsearch.services.clever-cloud.com:443"]
 
   protocol: "https"
-  username: "xxxxx"
-  password: "yyyyy"
+  username: "sink_node_username"
+  password: "sink_node_password"
 ```
 
 ```bash
@@ -112,8 +117,8 @@ Update elasticsearch.yml with the following content :
 
 ```bash
   hosts: ["node1-elasticsearch.services.clever-cloud.com:8080"]
-  username: "aaaaa"
-  password: "bbbbb"
+  username: "node1_user"
+  password: "node1_password"
 ```
 
 ```bash
@@ -122,4 +127,4 @@ chown root metricbeat.yml
 ./metricbeat -e
 ```
 
-Now go to your Kibana interface, you should have data flowing in
+Now go to your Kibana interface, you should have data flowing in.
