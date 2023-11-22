@@ -2,9 +2,9 @@
 
 Say you have 3 ES hosts/nodes defined as below and you want to setup metricbeat to monitor each of them, and visualize the data through a single Kibana console: 
 
-- aaaaa-elasticsearch.services.clever-cloud.com
-- bbbbb-elasticsearch.services.clever-cloud.com
-- ccccc-elasticsearch.services.clever-cloud.com
+- node1-elasticsearch.services.clever-cloud.com
+- node2-elasticsearch.services.clever-cloud.com
+- node3-elasticsearch.services.clever-cloud.com
 
 First, create a simple bash file with the content below, name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible (we strongly recommend Cellar.)
 
@@ -63,16 +63,18 @@ mkdir -p data
 
 Now create a new Kibana app on a new ES addon. This will be the ES and Kibana that will collect all data coming from metricbeat, and will also be the access point and interface where you will be able to do all your monitoring and enjoy all your data discovery, trnasformation etc...
 
-Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the configuration of your Kibana app to :
+Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the configuration of your Kibana app to and start it up:
 
 ```bash
-https://path_to_your_custom_config_file/kibana_custom_conf
+curl https://path_to_your_custom_config_file/kibana_custom_conf | sh
 ```
 
-Now that your Kibana is ready 
+Now that your Kibana is up and running, log into it and go create a new user, and add the following roles to it. (list minimal required roles)
 
-On each node
+Now ssh into each of the ES nodes you want metricbeat running to collect and push its data to your newly created and dedicated Kibana, and do the following:
+
 ```bash
+
 curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.6.1-linux-x86_64.tar.gz
 mkdir metricbeat
 tar xzvf metricbeat-8.6.1-linux-x86_64.tar.gz  --strip-components=1 -C metricbeat
@@ -101,7 +103,7 @@ output.elasticsearch:
 ```
 
 ```bash
-./metricbeat setup -e
+./metricbeat setup -e // don't worry if this seems to halt for a while 
 cd module.d
 vim elasticsearch.yml
 ```
@@ -109,7 +111,7 @@ vim elasticsearch.yml
 Update elasticsearch.yml with the following content :
 
 ```bash
-  hosts: ["bzzl7d0tnzvdntx0opfz-elasticsearch.services.clever-cloud.com:8080"]
+  hosts: ["node1-elasticsearch.services.clever-cloud.com:8080"]
   username: "aaaaa"
   password: "bbbbb"
 ```
