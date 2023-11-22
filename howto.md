@@ -11,7 +11,7 @@ cd metricbeat
 vim metricbeat.yml
 ```
 
-```
+```bash
 setup.kibana:
 
   host: "https://kibana-bo33yt4r5zq0j7va5gpr-elasticsearch.services.clever-cloud.com:443"
@@ -33,7 +33,8 @@ output.elasticsearch:
 cd module.d
 vim elasticsearch.yml
 ```
-```
+
+```bash
   hosts: ["bzzl7d0tnzvdntx0opfz-elasticsearch.services.clever-cloud.com:8080"]
   username: "aaaaa"
   password: "bbbbb"
