@@ -6,7 +6,7 @@ Say you have 3 ES hosts/nodes defined as below and you want to setup metricbeat 
 - bbbbb-elasticsearch.services.clever-cloud.com
 - ccccc-elasticsearch.services.clever-cloud.com
 
-First, create a simple bash file with the content below and name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible (we strongly recommend Cellar.)
+First, create a simple bash file with the content below, name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible (we strongly recommend Cellar.)
 
 kibana_custom_conf file content:
 
