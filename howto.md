@@ -106,6 +106,7 @@ output.elasticsearch:
   username: "sink_node_username"
   password: "sink_node_password"
 ```
+Continue the setup with :
 
 ```bash
 ./metricbeat setup -e // don't worry if this seems to halt for a while 
@@ -120,6 +121,8 @@ Update elasticsearch.yml with the following content :
   username: "node1_user"
   password: "node1_password"
 ```
+
+Then finish the setup with :
 
 ```bash
 cd ..
