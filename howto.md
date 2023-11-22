@@ -6,7 +6,7 @@ Say you have 3 ES hosts/nodes defined as below and you want to setup metricbeat 
 - node2-elasticsearch.services.clever-cloud.com
 - node3-elasticsearch.services.clever-cloud.com
 
-First, create a simple bash file with the content below, name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible (we strongly recommend Cellar.)
+First, create a simple bash file with the content below, name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible by the Clever Cloud platform (we strongly recommend Cellar.)
 
 kibana_custom_conf file content:
 
@@ -61,7 +61,7 @@ fi
 mkdir -p data
 ```
 
-Now create a new Kibana app on a new ES addon. This will be the ES and Kibana that will collect all data coming from metricbeat, and will also be the access point and interface where you will be able to do all your monitoring and enjoy all your data discovery, trnasformation etc...
+Now create a new Kibana app on a new ES addon. This will be the ES and Kibana that will collect all data coming from metricbeat, and will also be the access point and interface where you will be able to do all your monitoring and enjoy all your data discovery, transformation etc...
 
 Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the configuration of your Kibana app to and start it up:
 
