@@ -1,14 +1,14 @@
 # Elasticsearch cluster monitoring setup with Metricbeat and Kibana  
 
-Say you have 3 ES defined as below and you want to monitor each of them with metricbeat, and visualize the data through Kibana : 
+Say you have 3 ES hosts/nodes defined as below and you want to setup metricbeat to monitor each of them, and visualize the data through a single Kibana console: 
 
 - aaaaa-elasticsearch.services.clever-cloud.com
 - bbbbb-elasticsearch.services.clever-cloud.com
 - ccccc-elasticsearch.services.clever-cloud.com
 
-First, create a simple bash file with the content below and name it something relevant like "kibana_custom_conf" and host it somewhere publicly accessible (we strongly recommend Cellar.)
+First, create a simple bash file with the content below and name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible (we strongly recommend Cellar.)
 
-kibana_custom_conf file content
+kibana_custom_conf file content:
 
 ```bash
 #!/bin/bash -l
@@ -61,9 +61,17 @@ fi
 mkdir -p data
 ```
 
+Now create a new Kibana app on a new ES addon. This will be the ES and Kibana that will collect all data coming from metricbeat, and will also be the access point and interface where you will be able to do all your monitoring and enjoy all your data discovery, trnasformation etc...
 
-To do so, get the user and password from the env in `API_AUTH_USER` and `INTERNAL_AUTH_PASSWORD`, then:
+Before starting your Kibana app, set the CC_PRE_RUN_HOOK env value in the configuration of your Kibana app to :
 
+```bash
+https://path_to_your_custom_config_file/kibana_custom_conf
+```
+
+Now that your Kibana is ready 
+
+On each node
 ```bash
 curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.6.1-linux-x86_64.tar.gz
 mkdir metricbeat
