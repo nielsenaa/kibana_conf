@@ -96,9 +96,9 @@ setup.kibana:
   host: "https://kibana-sink_node-elasticsearch.services.clever-cloud.com:443"
   username: "kibana_custom_username"
   password: "kibana_custom_username_password"
-  ...
-  ...
-  ...
+
+
+
 output.elasticsearch:
   hosts: ["sink_node-elasticsearch.services.clever-cloud.com:443"]
 
