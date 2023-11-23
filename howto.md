@@ -1,10 +1,11 @@
 # Elasticsearch cluster monitoring setup with Metricbeat and Kibana  
 
-Say you have 3 ES hosts/nodes defined as below and you want to setup metricbeat to monitor each of them, and visualize the data through a single Kibana console: 
+Say you have several ES nodes defined as below and you want to setup metricbeat to monitor each of them, and visualize the data through a single Kibana console: 
 
 - node1-elasticsearch.services.clever-cloud.com
 - node2-elasticsearch.services.clever-cloud.com
 - node3-elasticsearch.services.clever-cloud.com
+- etc
 
 First, create a simple bash file with the content below, name it something relevant like "kibana_custom_conf" and host it somewhere so it is accessible by the Clever Cloud platform (we strongly recommend Cellar.)
 
