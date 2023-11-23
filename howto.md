@@ -117,7 +117,7 @@ vim elasticsearch.yml
 Update elasticsearch.yml with the following content :
 
 ```bash
-  hosts: ["node1-elasticsearch.services.clever-cloud.com:8080"]
+  hosts: ["localhost:8080"]
   username: "node1_user"
   password: "node1_password"
 ```
